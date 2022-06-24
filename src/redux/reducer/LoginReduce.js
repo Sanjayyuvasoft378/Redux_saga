@@ -1,42 +1,68 @@
-import {LOGIN_SUCCESS,LOGIN_FAILURE, GET_DATA, GET_FAILURE, GET_DATA_REQUEST}  from '../action/Type';
+import {LOGIN_SUCCESS,LOGIN_FAILURE, GET_DATA, 
+    GET_FAILURE,UPT_POST, ADD_POST, DLT_POST, SINGLE_POST} 
+     from '../action/Type';
 const userData = {
     user :[],
     dashboard:[]
 }
 const LoginReducer = (state=userData,action) => {
+    console.log("ddsssdd",state);
     switch(action.type){
         case LOGIN_SUCCESS:
             return {
                 ...state,
-            loading:false,
-            error:null,
             user : action.user
             }
 
         case LOGIN_FAILURE:
             return {
                 ...state,
-                loading:false,
                 error:action.error
             }
         
         case GET_DATA:
             return {
                 ...state,
-                loading:false,
                 dashboard:action.payload
             }
         case GET_FAILURE:
             return {
                 ...state,
-                loading:false,
                 error:action.error
 
             }
-        // case GET_DATA_REQUEST:
+
+        case ADD_POST:
+            return {
+                ...state,
+                user:action.payload                
+            }
+        case UPT_POST:
+            return {
+                ...state,
+                user:action.payload
+            }
+
+        case DLT_POST:
+            return {
+                ...state,
+                user:action.paylpad
+            }
+        case "DELETE":
+            return {
+                ...state,
+                user:action.payload
+            }
+
+        case SINGLE_POST:
+            return {
+                ...state,
+                dashboard:action.payload
+            }
+        // case SINGLE_POST:
         //     return {
         //         ...state,
-        //         loading:false
+        //         dashboard:action.payload
         //     }
             default:
                 return state;
